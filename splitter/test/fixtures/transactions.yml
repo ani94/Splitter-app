@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  debtor_id: 1
+  creditor_id: MyString
+  note: MyString
+  amount: 1.5
+
+two:
+  debtor_id: 1
+  creditor_id: MyString
+  note: MyString
+  amount: 1.5

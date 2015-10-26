@@ -1,0 +1,38 @@
+<h3><%= @group.name %></h3>
+<br/>Members<br/>
+<% @group.users.each do |user|%>
+<%= link_to user.name, user_path(user) %><br/>
+<%end%>
+<br/><br/><br/>
+<%= form_tag("/group/#{@group.id}/add_users", method: "get") do %>
+  <%= label_tag(:name, "Add a new user") %>
+  <%= text_field_tag(:name) %><br/>
+  <%= submit_tag("Add") %>
+<% end %>
+
+<br/>
+<h5>Transactions</h5>
+<%@group.transactions.each do |transaction|%>
+<%if transaction.amount > 0 %>
+  <%= User.find(transaction.creditor_id).name %> lent <%= User.find(transaction.debtor_id).name %>  Rs. <%= transaction.amount%> for <%= transaction.note %><br/>
+  <%end%>
+<%end%>
+<br/><br/>
+<%= form_tag("/group/#{@group.id}/add_transaction", method: "get") do %>
+  <%= label_tag(:creditor, "Person in the group giving the money") %>
+  <%= text_field_tag(:creditor) %><br/>
+  <%= label_tag(:debtor, "Person in the group getting the money") %>
+  <%= text_field_tag(:debtor) %><br/>
+  <%= label_tag(:amount, "Amount being lent") %>
+  <%= text_field_tag(:amount) %><br/>
+  <%= label_tag(:note, "Note about the trnasction") %>
+  <%= text_field_tag(:note) %><br/>
+  <%= submit_tag("Add Transaction") %>
+<% end %>
+<br/><br/>
+<h5>
+<%= form_tag("/group/#{@group.id}/simplify_debts", method: "post") do %>
+<%= label_tag(:name, "Simplify group debts") %>
+  <%= submit_tag("Simplify Debts") %>
+<% end %>
+</h5>

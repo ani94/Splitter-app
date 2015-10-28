@@ -16,6 +16,9 @@ Consists of 3 microservices
 
 ## Architecture Diagram
 ![alt tag](http://s18.postimg.org/3m9w25crd/architecture_2.png)
+RabbitMQ as a message broker.
+P - Producers
+C- Consumers.
 
 ## DataBase Schema for Splitter
 ![alt tag](http://s11.postimg.org/twtgfa47n/erd.png)
